@@ -1,0 +1,14 @@
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+.example-spacer {
+  flex: 1 1 auto;
+}
+*{
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+}
+
+mat-button:hover{
+  background:-webkit-linear-gradient(right, #a6f77b, #2dbd6e)
+}
+.my-toolbar ::ng-deep .mat-toolbar-row {
+  overflow: hidden;
+}

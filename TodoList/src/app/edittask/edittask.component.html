@@ -1,0 +1,12 @@
+<div class="modal">
+  <div class="title">
+    Edit Task
+  </div>
+  <div class="newCategory">
+    <input class="newCategoryInput" type="text" placeholder="Input here." [(ngModel)]="editedTask">
+  </div>
+  <div class="buttons">
+    <button class="button" type="button" (click)="cancel()">Cancel</button>
+    <button class="button" type="button" (click)="editTask()">Save</button>
+  </div>
+</div>

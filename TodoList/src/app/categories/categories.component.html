@@ -1,0 +1,78 @@
+<div class="centered">
+  <div class="logoutButton"></div>
+  <div class="content">
+
+    <div class="sidebar">
+        <h1 class="title">
+          CATEGORIES
+        </h1>
+        <div class="listMenu">
+          <div *ngIf="categories.length;else noCategory">
+            <a class="listMenuItem" *ngFor="let c of categories" [routerLink]="['/categories',c._id,'tasks']" routerLinkActive="isActive">
+              <p>{{c.category}}</p>
+            </a>
+          </div>
+          <ng-template #noCategory>
+            <div class="taskUndefined lengthZero">
+              There are no categories! Add category
+            </div>
+          </ng-template>
+        </div>
+
+        <button class="button" (click)="openDialog()">Add category</button>
+    </div>
+
+    <div class="tasksList">
+      <div class="ignoreFlex">
+        <div *ngIf="tasks;else taskUndefined">
+          <div class="options">
+            <h1 class="title">
+              Tasks
+            </h1>
+
+            <div class="dropdown">
+              <button class="dropdown-btn">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                 </svg>
+              </button>
+              <div class="dropdown-content">
+                 <div (click)="editCategory()">Edit</div>
+                 <div (click)="deleteCategory()">Delete</div>
+              </div>
+            </div>
+          </div>
+          <div class="scroll">
+            <div class="tasks" *ngFor="let task of tasks">
+              <div class="task">
+                <input type="checkbox" class="circledcheckbox" (click)="check(task._id,task.completed)" [checked]="task.completed">
+                <p>{{task.task}}</p>
+                <div class="buttons">
+                  <!-- delete button -->
+                  <!-- <img class="deleteButton" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD9ElEQVR4nO1bWU8TURTuH1J80KhRH3xQEx/cglGMJkbF+KSooLjELRFBQaKBuIFoIBFCjISYgGLZaqEtUJC9YSm0hZZCoS2FUrocc8bMhZIpONMpnYH7JSdpMne++92vs5x75x4FbHIoYkk+5LFB0agSMg1f4XFfKa/Acz6N1sLwnE1+BswHfHC3pxi2Kq/BFuXVqAI57vWWgDfgk4cBgVAQLurzoh74yrikz2O4JW9AqUVFRG+rTWEu5Rp7BzQ7+nkFnoPnIgfLV2b5LX0DErVZRHClVRc1H3KwfCd1z0HSBgRCQUio/Xff72u8IxovciFnQm0KBEW+DRRiks3655f+LW2WaLzIxfJiH3EzwB8KgH3BCeb5Kc7on7UQoUc1TyO24xvIxfJiH5HaoTbUKLoBA55xSOksgO11N0V/uosdqPF6ZyEMeqziGFA/2S2LgXMZoZrqic4Aq3cGdtWnEdId9alwpiUHktvzJRmobfmftbvhNkwsOIUbkDNQQciQfMrnBqlj0ueCpJYcojt3sFK4Aad0LwhRj9sEckGXa5ToPq3LFm7AIfUjQuQW+fUTS6BWVvfhpifCDTjf9ooQVdn0IBdU2dqI7gv618INKDbVEaK9jelQMa5hHiou/5wkA7V9G9fAnoZ0orvEXC/cgIXgIhxpXkpC5BaYQOEYBBuAsKzIxOQSxzQZMOZ1gCiZoC/ohzKLKuzSwvwc3xJSiOVzBdSI02bULPpcIDFsUuIFqQC1sLpQIx8o+DSmBmjpFQD/ewvgvP2X/Q/MLHoitml3DkOH0xjxOJ6LHGutAUjyFkhuz2faYV7OBc20gXBppw2cbZJaspnjl9vz5WfAftV9ph3OzriACQpJVkzcyQo7s0OujWeAackAzDi5QA2oo1cA0FtASZ8BQB+CKvoWgNVAX4N+mgcATYSUNBMEmgor6VwA6GRIS2eDwAcKPo3pdFhL1wOALogo6YoQ0CUxJV0TBLoo6qerwrAa6LK4in4XgE39YeS45hnT7qD6Iefx79YWwoW/uXBA/YA5fkKbKT8Det1myDCUM1+AuYCbmt8bf8AH48+IlSB65xDD0ec2y8+A9cS6GXC29SXpCLekSgV2n4voOteaGzsDbnR9JB01OfpBKlA7+oiu1K6i2BnwxdxIOkIzpAKsZWB14W62mBkws+iBncu2z5ePqSHewC1xrB7c2r/alhxRaoYKRmrCihpvdX9mLsGRuQnRSmTWCuwL+0zrLgorziwcqeE7HOBtQDAUYjqO907QlYGaUFvMDUBgR2+N1UwFSbwHjhreGasFDT7qsjmsIMGHDtb2Xul4s26lMdgX9on3f7RVLIqozt4A+AspdYr1eqVBaQAAAABJRU5ErkJggg=="> -->
+                  <img class="button deleteButton" (click)="deleteTask(task._id)" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADfUlEQVR4nO1bSyh8URg/HpsRyWMxG1I2hIa8YiExylZENuysZKXsPaIoozyyoaTYsFGSxw4LIUVkgZJXEaaQDP3+fZ1ux+gO/+vcMfdyvvpq6p7z+37nN/ee+51zz8fwx40FFX1/H+jtBVpagKYmY059+vqAgwMbCvDwADQ0AGFhAGNyThiNjcDjo00E8PmAsjL5gX/08nKObXkBhoYE6chIfivPzABLS8ac+lBfwtDwRkZsIIDLJQhPTMjjEYaGl5MDawvg8wHh4ZxsQoJ5uImJHDMiAnh9tbAA9/fi38rONg+XsDRcihEyAV5egPNz4OhI33d2BNH09MDtjDphabgUI1A74kYcTRdgdxeoqgIcDvNnd7OdOFZXA3t7JgkwN2ePgesJMT8vKcDpKRATI0CjooDCQsDttqYTt/d/VmwscHYmIUBrqwAj8KsrWN4uL4GCAsG7rU1CgNxcAbS5CdvYxobgnZcnIUBKigC6u4NtjLhqvFNTJQQoKRFA09OwjU1NCd6lpRIC9PcLoPh4YHycTyq3t9Z04jY2BsTFCd4DAxICPD0BaWmhf6V91ymBojF8WwCy42P/TMwunpEBnJzAnEzw+RkYHva/tSg/p7eEFfz9WoE40rKZOJu+FnC9W+p6vbCMEReNF3E0YMxQayWAS90B+N9HgNbts7PAzU3gNmtrwPp64OvUlzC+2gOw5CPgdvN2lJfr2fKywFpZ0W+Tn8+vV1TYUACnk7ej1ZmeUYKiYXk8+m20lR1h/ToBPB6BRRmnnikBHOoOgHoEmJoDoCZB5+cTrnoLeNVrECoPYCoRgsoEmUqFodYCLhgxZqi1Wgy51GoQajnM1H4A1IYIUztCUFti3s9fmWpP0Kk2RaF2hZnaFof6LuD4ox9GMjN5u+Rk/euTkwKLfutZUhK/npVlQwG2toDmZv4FWM/oUHNnJ9DVFbgSZHWVY2xv21CAn7QfE6CoSASiI6lWsYsLwau4OIgC1NSIQIuLsIwtLAhetbVBFGBwUAQiMaxiVMug8aLTbEET4PoaiI4WwUZHEXKjI3EaHzraTxyDWjPU3e1f1Fhfz2/Bw0PzSmS+copFMevq/Isze3oMD4cZ7vH2xgOH+iToRydOxC3oApBRoPZ2XkES6oETh46Obw1evmyOKkho0qHa3srKnyuNoVgUk55/ySoWJtX7F9g/3CQ6XTNVDmUAAAAASUVORK5CYII=">
+                  <!-- edit button -->
+                  <img class="button editButton" (click)="updateTask(task._id)" src="data:image/png;base64,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">
+                </div>
+
+              </div>
+            </div>
+            <div *ngIf="tasks.length==0" class="taskUndefined lengthZero">There are no tasks! Add task</div>
+          </div>
+        </div>
+        <ng-template #taskUndefined>
+          <div class="taskUndefined">Select a category</div>
+        </ng-template>
+
+      </div>
+      <button class="circleAddButton" (click)="createTask()">
+        +
+      </button>
+    </div>
+  </div>
+  <div class="logoutButton">
+    <button class="button" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+

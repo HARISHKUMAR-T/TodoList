@@ -1,0 +1,296 @@
+
+p{
+  margin-bottom: 0px;
+}
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background:-webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+}
+
+.content{
+  display: flex;
+  // width:900px;
+  // height:680px;
+  //can be used as above
+  width: 100%;
+  height: 100%;
+  max-width:900px ;
+  max-height:680px;
+
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+
+  width:200px;
+  background:#e8e8e8 ;
+
+  color:#2dbd6e;
+  padding:40px;
+  border-bottom-left-radius:8px ;
+  border-top-left-radius:8px ;
+  .button{
+    background-color:#00d1b2 ;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+}
+
+
+
+.tasksList{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  background:rgb(229, 228, 228);
+  padding:40px;
+
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.title{
+
+  color:#2dbd6e;
+  font-family: 'Lato';
+  font-size:22px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.listMenu{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  flex-grow: 1;
+  overflow: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #2dbd6e;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 100, 80);
+    outline: none;
+  }
+
+  .listMenuItem{
+    text-decoration: none;
+    color:#5f5f5f;
+    width:100%;
+
+    display: flex;
+
+    align-items: center;
+    padding:10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+
+    &:hover{
+      background:#f8f8f8 ;
+    }
+
+    &.isActive{
+      background-color:#cff8ef ;
+      color:rgb(0, 100, 80);
+    }
+  }
+
+}
+.scroll{
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 66vh;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #2dbd6e;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 100, 80);
+    outline: none;
+  }
+}
+.tasks{
+  background: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  transition:box-shadow 0.2s ease;
+
+  &:hover{
+    box-shadow: 0 0 0 5px #eeeeee;
+  }
+
+
+  .task{
+    display: flex;
+
+
+    &:hover .buttons > .button{
+      opacity: 1;
+    }
+  }
+  .circledcheckbox{
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #2dbd6e;
+    margin:0;
+    margin-right: 10px;
+
+    // &::before{
+    //   content: '';
+    //   transform: translate(-50%, -50%) scale(0);
+    //   transition: all 0.2s ease-in-out;
+    // }
+
+    &:checked{
+      background-color: #2dbd6e;
+      font-weight: bold;
+      font-size: x-small;
+      &:checked + p{
+        text-decoration: line-through;
+      }
+      &::before{
+        display: inline-block;
+        content: '\2713';
+        color: white;
+        margin-left:5px ;
+        margin-top: 2px;
+
+        // transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+  }
+
+}
+.circleAddButton {
+  // position: absolute;
+  // bottom: 35px;
+  // right: 135px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: auto;
+  font-size: 2.5em;
+  background-color:#00d1b2 ;
+  color: white;
+  border: none;
+  cursor: pointer;
+  // box-shadow: 0 0 0 5px #a9e3da;
+}
+
+.taskUndefined{
+  text-align: center;
+  font-size:20px;
+  text-transform: uppercase;
+  color:#888;
+  &.lengthZero{
+    text-transform: none;
+  }
+}
+
+//drop-down
+.dropdown {
+  position: relative;
+  margin-left: auto;
+  top: 6px;
+}
+.dropdown-btn {
+  cursor: pointer;
+  background-color:#e8e8e8;
+  border:none;
+}
+
+.dropdown-content {
+  background-color:#e8e8e8 ;
+  padding: 5px;
+  display: none;
+  position: absolute;
+  right:15px;
+  z-index: 1;
+  cursor: default;
+  div{
+    padding: 5px;
+  }
+
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown-content div:hover {
+  background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.options{
+  display: flex;
+}
+
+//deleteButton
+.deleteButton,.editButton{
+  cursor: pointer;
+  width:20px;
+  height: 20px;
+}
+
+.buttons{
+  margin-left: auto;
+
+  .button{
+    margin-left: 10px;
+    opacity: 0;
+  }
+}
+
+.logoutButton{
+  height:95vh;
+  width:25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .button{
+
+    margin-right:20px;
+
+    background-color:#00d1b2 ;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+}

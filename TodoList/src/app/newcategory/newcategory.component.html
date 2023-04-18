@@ -1,0 +1,12 @@
+<div class="modal">
+  <div class="title">
+    Create a new category
+  </div>
+  <div class="newCategory">
+    <input class="newCategoryInput" type="text" placeholder="Input here." [(ngModel)]="newCategory">
+  </div>
+  <div class="buttons">
+    <button class="button" type="button" (click)="cancel()">Cancel</button>
+    <button class="button" type="button" (click)="createCategory()">Save</button>
+  </div>
+</div>

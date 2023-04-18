@@ -1,0 +1,35 @@
+*{
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+.modal{
+  width:470px;
+  height:200px ;
+  border-radius: 10px;
+  padding:35px;
+}
+.newCategory{
+
+  .newCategoryInput{
+    width: 80%;
+    padding:8px;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+}
+
+.buttons{
+  display: flex;
+  justify-content: end;
+  .button{
+    margin-left: 10px;
+    padding: 6px;
+    background-color:#00d1b2 ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+}
